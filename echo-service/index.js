@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 app.all("/", function (req, resp){
+	console.log('Received reques for ', req.path, ' with method ' , req.method)
 	req.pipe(resp);
 })
 
