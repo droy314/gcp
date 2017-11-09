@@ -1,20 +1,19 @@
 package net.deepuroy.learn.gcpechoservice;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
-import javax.ws.rs.*;
+import org.springframework.web.bind.annotation.*;
 
-@Path("echo")
+@RestController
+@RequestMapping("echo")
 public class MessageResource {
 	
-	@POST
-	@Consumes("application/json")
-	@Produces("application/json")
-	public Message echo(Message message) {
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Message echo(@RequestBody Message message) {
 		return message;
 	}
 	
-	@GET
-	@Produces("text/plain")
+	@GetMapping(produces = MediaType.TEXT_PLAIN_VALUE)
 	public String get() {
 		return "Hello, from MessageResource!";
 	}
